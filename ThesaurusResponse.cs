@@ -8,6 +8,5 @@ public class ThesaurusResponse
 
 public class ThesaurusResponseMeta
 {
-  public string[] Stems { get; set; }
   public string[][] Syns { get; set; }
 }
