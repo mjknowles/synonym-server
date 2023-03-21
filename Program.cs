@@ -18,6 +18,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapHealthChecks("/healthz");
+app.MapGet("/", () => "Hello World!");
 
 app.UseHttpsRedirection();
 
