@@ -19,12 +19,12 @@ public class SynonymController : ControllerBase
   }
 
   [HttpGet()]
-  public async Task<Synonyms> Get([FromQuery] string word, [FromQuery] string functionalLabel)
+  public async Task<Synonyms> Get([FromQuery] string stem, [FromQuery] string functionalLabel)
   {
     _logger.LogDebug("request received");
     using HttpClient client = new();
 
-    var resp = (await client.GetFromJsonAsync<ThesaurusResponse[]>(string.Format(_thesaurusUriTemplate, word.ToLower())))
+    var resp = (await client.GetFromJsonAsync<ThesaurusResponse[]>(string.Format(_thesaurusUriTemplate, stem.ToLower())))
       ?.Where(r => String.Equals(r.Fl, functionalLabel, StringComparison.CurrentCultureIgnoreCase))
       ?.FirstOrDefault();
 
