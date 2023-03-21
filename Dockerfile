@@ -4,6 +4,7 @@ COPY . .
 RUN dotnet restore && dotnet publish --no-restore -c Release -o /app
 
 FROM mcr.microsoft.com/dotnet/runtime:7.0.4-alpine3.17 AS prod
+EXPOSE  80
 WORKDIR /app
 COPY --from=build /app .
 ENTRYPOINT ["dotnet", "synonym-server.dll", "--urls", "http://localhost:80"]
