@@ -3,8 +3,8 @@ WORKDIR /src
 COPY . .
 RUN dotnet restore && dotnet publish --no-restore -c Release -o /app
 
-FROM mcr.microsoft.com/dotnet/aspnet:7.0.4-alpine3.17 AS prod
-EXPOSE  5000
+FROM mcr.microsoft.com/dotnet/aspnet:7.0.4 AS prod
+EXPOSE  80
 WORKDIR /app
 COPY --from=build /app .
-ENTRYPOINT ["dotnet", "synonym-server.dll", "--urls", "http://localhost:5000"]
+ENTRYPOINT ["dotnet", "synonym-server.dll"]
