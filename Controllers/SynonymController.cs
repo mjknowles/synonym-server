@@ -14,7 +14,7 @@ public class SynonymController : ControllerBase
   public SynonymController(ILogger<SynonymController> logger, IConfiguration config)
   {
     _logger = logger;
-    _thesaurusUriTemplate = "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/{0}?key=" + config["THESAURUS_KEY"];
+    _thesaurusUriTemplate = "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/{0}?key=" + config["THESAURUS_API_KEY"];
     _config = config;
   }
 
