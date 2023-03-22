@@ -28,6 +28,6 @@ public class SynonymController : ControllerBase
       ?.FirstOrDefault();
 
     if (resp == null) return Synonyms.NullSynonyms;
-    return new Synonyms(resp.Meta.Syns?.FirstOrDefault() ?? Array.Empty<string>(), resp.Fl);
+    return new Synonyms(resp.Meta.Syns?.SelectMany(s => s)?.ToArray() ?? Array.Empty<string>(), resp.Fl, resp.ShortDef);
   }
 }
